@@ -15,6 +15,23 @@ class TicTacToe:
         self.__board = board
         self.__engine = engine
 
+    @property
+    def engine(self) -> int: 
+        """engine property (getter)"""
+        return self.__engine
+
+    @engine.setter
+    def engine(self, lvl: int):
+        """engine property (setter)
+
+        :param lvl: engine level (1 to 4)
+        :type lvl: int
+        """
+        if 1 <= lvl <= 4:
+            self.__engine = lvl
+        else:
+            raise ValueError("AI engine level must be >= 1 and <= 4")
+
     @staticmethod
     def whoWinner(board: list) -> str:
         """Game end checker (check for winner or full board)
@@ -24,9 +41,6 @@ class TicTacToe:
         :returns: winner (x, o) || full (f) || False
         :rtype: str
         """
-        # check if the entire board filled
-        if all(all(r) for r in board):
-            return ('F', ())
         # check horizontal lines
         # iterate over all rows
         for r in range(3):
@@ -56,6 +70,9 @@ class TicTacToe:
             # check if all elements are same
             if len(set(r[i])) == 1 and r[i][0]:
                 return r[i][0], (i, 2)
+        # check if the entire board filled
+        if all(all(r) for r in board):
+            return ('F', ())
         # nothing
         return ()
 

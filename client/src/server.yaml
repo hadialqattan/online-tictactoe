@@ -1,0 +1,4 @@
+# server address
+host: 127.0.0.1 # Host must be IPv4 0.0.0.0 - 255.255.255.255
+port: 6400 # Port number must be between 1 and 65535
+# don't forget to run the server

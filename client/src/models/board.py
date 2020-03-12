@@ -1,8 +1,9 @@
+from time import sleep
 import pygame
 
 # local import
-from src.base.base import GUIBase
-from src.tictactoe.tictactoe import TicTacToe
+from base.base import GUIBase
+from tictactoe.tictactoe import TicTacToe
 
 
 class Board(GUIBase):
@@ -64,10 +65,37 @@ class Board(GUIBase):
         """
         self.__end = v
 
-    def board_reset(self):
-        """Reset the board"""
-        self.__end = False
+    def board_reset(self, r):
+        """Reset the board
+        
+        :param r: game result
+        :type r: str
+        """
+        # sleep before show
+        sleep(2)
+        # start end show 
+        # set show text
+        if r == 'w': 
+            txt = ['YOU', 'WON', ['Tic', 'Tac', 'Toe']]
+        elif r == 'l': 
+            txt = ['YOU', 'LOS', 'T!!']
+        else:
+            txt = ['TIC', 'TAC', 'TOE']
+        # show text with delay
+        for r in range(3): 
+            for c in range(3): 
+                self.__squares[r][c].value = txt[r][c]
+                sleep(0.25)
+        # delay before hide the text
+        sleep(2)
+        # reset board
         self.__board = [["" for i in range(3)] for j in range(3)]
+        # reset squares
+        for i in self.__squares: 
+            for s in i: 
+                s.reset()
+        # enable playing events
+        self.__end = False
 
     def set_value(self, v: str) -> str:
         """set square value
@@ -214,8 +242,13 @@ class Square(GUIBase):
         :param v: value (X | O)
         :type v: str
         """
-        if v in ("X", "O") and not self.__value:
-            self.__value = v
+        self.__value = v
+
+    def reset(self):
+        """Reset square"""
+        self.__value = ''
+        self.__win = False
+        self.__selected = False
 
     def draw(self):
         """Draw square value"""
@@ -250,7 +283,7 @@ class Square(GUIBase):
         :type space: int
         """
         # create font object
-        font = pygame.font.Font("./src/assets/comfortaa-font/Comfortaa-Regular.ttf", fsize)
+        font = pygame.font.Font("assets/comfortaa-font/Comfortaa-Regular.ttf", fsize)
         # render font object with text
         v = font.render(txt, 1, rgb)
         # draw font obj on the surface

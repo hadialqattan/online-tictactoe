@@ -31,7 +31,7 @@ class GUIBase:
         """Draw function (must override)"""
         pass
 
-    def _type(self, txt: str, rgb: tuple, pos: tuple, fsize: int):
+    def _type(self, txt: str, rgb: tuple, pos: tuple, fsize: int, b: bool=False):
         """Draw string on the surface screen
         
         :param txt: text to draw
@@ -42,9 +42,12 @@ class GUIBase:
         :type pos: tuple
         :param fsize: font size
         :type fsize: int
+        :param b: bold font
+        :type b: bool
         """
         # create font object
-        font = pygame.font.Font("../assets/sen-font/Sen-Regular.ttf", fsize)
+        t = "Bold" if b else "Regular"
+        font = pygame.font.Font(f"assets/comfortaa-font/Comfortaa-{t}.ttf", fsize)
         # render font object with text
         v = font.render(txt, 1, rgb)
         # draw font obj on the surface

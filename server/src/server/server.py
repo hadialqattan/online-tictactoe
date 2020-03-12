@@ -1,5 +1,6 @@
 from socket import socket, error, AF_INET, SOCK_STREAM
 from _thread import start_new_thread
+from pickle import dumps, loads
 from sys import argv
 
 
@@ -17,7 +18,7 @@ class Server:
         self.__host = host
         self.__port = port
         self.__clients = []
-        self.__socket = socket(AF_INET, SOCK_STREAM)
+        self.__socket = None
         self.__run = False
 
     @property
@@ -55,22 +56,25 @@ class Server:
         
     def start(self): 
         """Start the server"""
-        with self.__socket:
-            try:
-                self.__run = True
-                # try to run the server 
-                self.__socket.bind((self.__host, self.__port))
-                # listen for connections
-                self.__socket.listen(2)
-                # start connection loop
-                self.__connection_loop()
-            except error as bErr:
-                print(f"Server error:\n{bErr}")
-                exit(1)
+        try:
+            self.__run = True
+            # try to run the server
+            self.__socket = socket(AF_INET, SOCK_STREAM)
+            self.__socket.bind((self.__host, self.__port))
+            # listen for connections
+            self.__socket.listen(2)
+            # start connection loop
+            self.__connection_loop()
+        except error as bErr:
+            print(f"Server error:\n{bErr}")
+            self.stop()
 
     def stop(self): 
         """Stop the server"""
         self.__run = False
+        for c in self.__clients: 
+            c.close()
+        self.__socket = None
 
     def __connection_loop(self):
         """Main connection loop"""
@@ -80,6 +84,9 @@ class Server:
             conn, addr = self.__socket.accept()
             # add the client in clients list
             self.__clients.append(conn)
+            # send playing value to the client
+            v = 'X' if len(self.__clients) == 1 else 'O'
+            conn.sendall(dumps(v))
             # start new client thread
             start_new_thread(self.__client_thread, (conn,))
 
@@ -89,25 +96,25 @@ class Server:
         :param conn: client connection
         :type conn: socket.socket
         """
-        with conn as c:
-            # start client loop
-            while self.__run:
-                try: 
-                    # receive data from client
-                    data = c.recv(1024).decode()
-                    # check if the client still connected
-                    if not data:
-                        break
-                    # send the data to another client
-                    for client in self.__clients:
-                        # block data sending to this connection
-                        if client != c:
-                            # send the data
-                            client.sendall(str.encode(data))
-                except error:
+        # start client loop
+        while self.__run:
+            try:
+                # receive data from client
+                data = loads(conn.recv(64))
+                # check if the client still connected
+                if not data:
                     break
+                # send the data to another client
+                for client in self.__clients:
+                    # block data sending to this connection
+                    if client != conn:
+                        # send the data
+                        client.sendall(dumps(data))
+            except error:
+                break
         # remove the client from clients list
         try:
+            conn.close()
             self.__clients.remove(conn)
         except ValueError: 
             pass
