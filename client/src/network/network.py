@@ -3,7 +3,7 @@ from _thread import start_new_thread
 from pickle import loads, dumps
 
 
-class Network: 
+class Network:
 
     """TicTacToe client-side
 
@@ -15,10 +15,10 @@ class Network:
 
     def __init__(self, host: str, port: int):
         self.__host = host
-        self.__port = port 
+        self.__port = port
         self.__socket = None
 
-    def connect(self) -> bool: 
+    def connect(self) -> bool:
         """connect to the server
         
         :returns: connection status
@@ -26,9 +26,9 @@ class Network:
         """
         try:
             self.__socket = socket(AF_INET, SOCK_STREAM)
-            # connect to the server 
+            # connect to the server
             self.__socket.connect((self.__host, self.__port))
-            return True 
+            return True
         except error as cErr:
             print(f"Cannot connect to server:\n{cErr}")
             self.__socket.close()
@@ -43,20 +43,20 @@ class Network:
         try:
             self.__socket.sendall(dumps(data))
             return True
-        except error as sendErr: 
+        except error as sendErr:
             print(f"Cannot send data to server:\n{sendErr}")
             self.__socket.close()
             return False
-    
+
     def recv(self) -> tuple:
         """Receive data from server
 
         :returns: TicTacToe movement obj (value, (posx, posy))
         :rtype: tuple
         """
-        try: 
+        try:
             return loads(self.__socket.recv(64))
-        except error as recvErr: 
+        except error as recvErr:
             print(f"Cannot recv data from server:\n{recvErr}")
             self.__socket.close()
             return False

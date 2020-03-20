@@ -6,20 +6,12 @@ class GUIBase:
 
     """Base GUI class
     
-    :param size: screen size (width, height)
-    :type size: tuple
     :param screen: pygame screen
     :type screen: pygame.Surface 
     """
 
-    def __init__(self, size: tuple, screen: pygame.Surface):
-        self.__size = size
+    def __init__(self, screen: pygame.Surface):
         self.__screen = screen
-
-    @property
-    def size(self):
-        """size property (getter)"""
-        return self.__size
 
     @property
     def screen(self):
@@ -31,7 +23,7 @@ class GUIBase:
         """Draw function (must override)"""
         pass
 
-    def _type(self, txt: str, rgb: tuple, pos: tuple, fsize: int, b: bool=False):
+    def _type(self, txt: str, rgb: tuple, pos: tuple, fsize: int, b: bool = False):
         """Draw string on the surface screen
         
         :param txt: text to draw

@@ -9,24 +9,26 @@ from tictactoe.tictactoe import TicTacToe
 class Board(GUIBase):
 
     """TicTacToe board
-        
-    :param size: screen size (width, height)
-    :type size: tuple
+    
     :param screen: pygame screen
     :type screen: pygame.Surface 
     """
 
-    def __init__(self, size: tuple, screen: pygame.Surface):
-        super().__init__(size, screen)
+    def __init__(self, screen: pygame.Surface):
+        super().__init__(screen)
         # init game board
         self.__board = [["" for i in range(3)] for j in range(3)]
         # create squares list
         self.__squares = [
-            [Square((r, c), (size[0], size[2]), self.screen) for r in range(3)]
-            for c in range(3)
+            [Square((r, c), self.screen) for r in range(3)] for c in range(3)
         ]
         self.__selected = None
         self.__end = False
+
+    @property
+    def board(self) -> list:
+        """board property (getter)"""
+        return self.__board
 
     @property
     def selected(self) -> tuple:
@@ -52,12 +54,12 @@ class Board(GUIBase):
             self.__selected = None
 
     @property
-    def end(self) -> bool: 
+    def end(self) -> bool:
         """end property (getter)"""
         return self.__end
 
-    @end.setter 
-    def end(self, v: bool): 
+    @end.setter
+    def end(self, v: bool):
         """end property (setter)
 
         :param v: end value
@@ -65,34 +67,34 @@ class Board(GUIBase):
         """
         self.__end = v
 
-    def board_reset(self, r):
+    def board_reset(self, r: str):
         """Reset the board
         
         :param r: game result
         :type r: str
         """
         # sleep before show
-        sleep(2)
-        # start end show 
+        sleep(0.5)
+        # start end show
         # set show text
-        if r == 'w': 
-            txt = ['YOU', 'WON', ['Tic', 'Tac', 'Toe']]
-        elif r == 'l': 
-            txt = ['YOU', 'LOS', 'T!!']
+        if r == "w":
+            txt = ["YOU", "WON", ["Tic", "Tac", "Toe"]]
+        elif r == "l":
+            txt = ["YOU", "LOS", "T!!"]
         else:
-            txt = ['TIC', 'TAC', 'TOE']
+            txt = ["TIC", "TAC", "TOE"]
         # show text with delay
-        for r in range(3): 
-            for c in range(3): 
+        for r in range(3):
+            for c in range(3):
                 self.__squares[r][c].value = txt[r][c]
-                sleep(0.25)
+                sleep(0.20)
         # delay before hide the text
-        sleep(2)
+        sleep(1)
         # reset board
         self.__board = [["" for i in range(3)] for j in range(3)]
         # reset squares
-        for i in self.__squares: 
-            for s in i: 
+        for i in self.__squares:
+            for s in i:
                 s.reset()
         # enable playing events
         self.__end = False
@@ -116,13 +118,14 @@ class Board(GUIBase):
                 # get winner
                 w = TicTacToe.whoWinner(self.__board)
                 # check if there's a winner
-                if w and w != ('F', ()):
+                if w and w != ("F", ()):
                     self.__set_win_squares(w)
-                elif w == ('F', ()):
+                elif w == ("F", ()):
                     self.__end = True
                 return w
+        return ()
 
-    def __set_win_squares(self, w: list): 
+    def __set_win_squares(self, w: list):
         """Set win squares
 
         :param w: win line
@@ -131,23 +134,23 @@ class Board(GUIBase):
         # end the game
         self.__end = True
         # rows
-        if w[1][1] == 0: 
+        if w[1][1] == 0:
             for i in range(3):
                 self.__squares[w[1][0]][i].win = True
         # columns
-        elif w[1][1] == 1: 
-            for i in range(3): 
+        elif w[1][1] == 1:
+            for i in range(3):
                 self.__squares[i][w[1][0]].win = True
         # diagonal
-        elif w[1][1] == 2: 
-            if w[1][0] == 0: 
+        elif w[1][1] == 2:
+            if w[1][0] == 0:
                 # (0,0), (1,1), (2,2) line
                 for i in range(3):
-                    self.__squares[i][i].win = True 
+                    self.__squares[i][i].win = True
             else:
                 # (0,2), (1,1), (2,0) line
                 for i in range(3):
-                    self.__squares[i][abs(i-2)].win = True
+                    self.__squares[i][abs(i - 2)].win = True
 
     def draw(self):
         """Draw board"""
@@ -160,27 +163,23 @@ class Board(GUIBase):
                 self.__squares[c][r].draw()
         # Draw lines
         # set space between squares
-        space = self.size[0] // 3
+        space = 166
         # drow 2 lines HvV
         for r in range(1, 3):
             # draw horizontal line (screen, (color), (start_pos), (end_pos), width)
             pygame.draw.line(
-                self.screen,
-                (72, 234, 54),
-                (self.size[2] + 10, r * space),
-                (self.size[0] + self.size[2] - 10, r * space),
-                3,
+                self.screen, (72, 234, 54), (260, r * space), (740, r * space), 3,
             )
             # draw vertical line (screen, (color), (start_pos), (end_pos), width)
             pygame.draw.line(
                 self.screen,
                 (72, 234, 54),
-                (r * space + self.size[2], 15),
-                (r * space + self.size[2], self.size[1] - 15),
+                (r * space + 250, 15),
+                (r * space + 250, 485),
                 3,
             )
         # frame
-        pygame.draw.rect(self.screen, (72, 234, 54), ((self.size[2], 0), (self.size[0], self.size[1])), 3)
+        pygame.draw.rect(self.screen, (72, 234, 54), ((250, 0), (500, 500)), 3)
 
 
 class Square(GUIBase):
@@ -189,16 +188,13 @@ class Square(GUIBase):
 
     :param pos: square position (row, column)
     :type pos: tuple
-    :param widthpos: screen width and left gap (width, gap)
-    :type widthpos: tuple
     :param screen: pygame screen
     :type screen: pygame.Surface
     """
 
-    def __init__(self, pos: tuple, widthpos: tuple, screen: pygame.Surface):
-        super().__init__(0, screen)
+    def __init__(self, pos: tuple, screen: pygame.Surface):
+        super().__init__(screen)
         self.__pos = pos
-        self.__widthpos = widthpos
         self.__selected = False
         self.__win = False
         self.__value = ""
@@ -246,21 +242,21 @@ class Square(GUIBase):
 
     def reset(self):
         """Reset square"""
-        self.__value = ''
+        self.__value = ""
         self.__win = False
         self.__selected = False
 
     def draw(self):
         """Draw square value"""
         # set space between squares
-        space = self.__widthpos[0] // 3
+        space = 166
         # set actuall square potition on the screen
-        pos = self.__pos[0] * space + self.__widthpos[1], self.__pos[1] * space
+        pos = self.__pos[0] * space + 250, self.__pos[1] * space
         # draw bold outline around selected square
         if self.__selected:
             # draw rectangle (fill)
             pygame.draw.rect(self.screen, (10, 30, 0), (pos, (space, space)))
-        if self.__win: 
+        if self.__win:
             # draw win rectangle (fill)
             pygame.draw.rect(self.screen, (60, 80, 50), (pos, (space, space)))
         # check for unempty squares

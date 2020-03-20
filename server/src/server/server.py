@@ -1,10 +1,9 @@
 from socket import socket, error, AF_INET, SOCK_STREAM
 from _thread import start_new_thread
 from pickle import dumps, loads
-from sys import argv
 
 
-class Server: 
+class Server:
 
     """TicTacToe server-side
 
@@ -14,7 +13,7 @@ class Server:
     :type port: int
     """
 
-    def __init__(self, host: str, port: int): 
+    def __init__(self, host: str, port: int):
         self.__host = host
         self.__port = port
         self.__clients = []
@@ -22,12 +21,12 @@ class Server:
         self.__run = False
 
     @property
-    def host(self) -> str: 
+    def host(self) -> str:
         """host property (getter)"""
         return self.__host
 
     @host.setter
-    def host(self, value: str): 
+    def host(self, value: str):
         """host property (setter)
 
         :param value: host value
@@ -36,12 +35,12 @@ class Server:
         self.__host = value
 
     @property
-    def port(self) -> int: 
+    def port(self) -> int:
         """port property (getter)"""
         return self.__port
 
-    @port.setter 
-    def port(self, value: int): 
+    @port.setter
+    def port(self, value: int):
         """port property (setter)
 
         :param value: port value
@@ -50,11 +49,11 @@ class Server:
         self.__port = value
 
     @property
-    def run(self) -> bool: 
+    def run(self) -> bool:
         """run property (getter)"""
         return self.__run
-        
-    def start(self): 
+
+    def start(self):
         """Start the server"""
         try:
             self.__run = True
@@ -69,10 +68,10 @@ class Server:
             print(f"Server error:\n{bErr}")
             self.stop()
 
-    def stop(self): 
+    def stop(self):
         """Stop the server"""
         self.__run = False
-        for c in self.__clients: 
+        for c in self.__clients:
             c.close()
         self.__socket = None
 
@@ -85,7 +84,7 @@ class Server:
             # add the client in clients list
             self.__clients.append(conn)
             # send playing value to the client
-            v = 'X' if len(self.__clients) == 1 else 'O'
+            v = "X" if len(self.__clients) == 1 else "O"
             conn.sendall(dumps(v))
             # start new client thread
             start_new_thread(self.__client_thread, (conn,))
@@ -100,7 +99,7 @@ class Server:
         while self.__run:
             try:
                 # receive data from client
-                data = loads(conn.recv(64))
+                data = loads(conn.recv(256))
                 # check if the client still connected
                 if not data:
                     break
@@ -116,5 +115,5 @@ class Server:
         try:
             conn.close()
             self.__clients.remove(conn)
-        except ValueError: 
+        except ValueError:
             pass
