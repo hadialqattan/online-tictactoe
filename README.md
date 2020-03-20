@@ -11,7 +11,7 @@
   </a>
 </p>
 
-> online-tictactoe is a GUI online pygame version of tictactoe game with AI, created using socket lib for server-side and client network.
+> online-tictactoe is a GUI online pygame version of tictactoe game with AI, server-side and client network has been created using python socket lib.
 
 <br>
 
