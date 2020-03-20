@@ -4,12 +4,12 @@
 
 # Usage 🗝
 
-There are two ways to use this project :
+There are two ways to use the server :
 
 * Using exe version without any requirements :
     * Download entire exe dir
-    * Configure [server.yaml](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/server/server.yaml) file (set server host & port)
-    * Run exe/main.exe
+    * Configure [server.yaml](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/server/exe/server.yaml) file (set server host & port)
+    * Run exe/[main.exe](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/server/exe/main.exe)
     * Press start button
    
         ![server gui jpg](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/server/docs/server_gui.jpg?raw=true)

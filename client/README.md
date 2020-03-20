@@ -4,13 +4,13 @@
 
 # Usage 🗝
 
-There are two ways to use this project :
+There are two ways to use the client side :
 
 * Using exe version without any requirements :
-    * Download entire exe dir
-    * Configure [server.yaml](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/exe/server.yaml) file (set server host & port)
-    * Run exe/main.exe
-    * Start playing ! [DEMO](#Demo)
+    * Download entire exe dir.
+    * Configure [server.yaml](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/exe/server.yaml) file (set server host & port).
+    * Run exe/[main.exe](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/exe/main.exe).
+    * Start playing!
 
         ![ttt-interface](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/docs/init.jpg?raw=true)
 
@@ -24,17 +24,17 @@ There are two ways to use this project :
         ```shell 
         $ ./runner.sh g
         ```
-    * Start playing [DEMO](#Demo)
+    * Start playing!
     
         ![ttt-interface](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/docs/init.jpg?raw=true)
 
 # Demo  🧮
-> You can play with any connected enemy or play with AI.
+> You can playing with any connected enemy or playing with AI.
 
 # Play Online (online)
 
 ## Start the server to start playing
-* configure [server.yaml](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/server.yaml) file for client & server (2 files).
+* configure [server.yaml](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/server.yaml) file for client.
 * start the server.
     
     ![start-the-server](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/docs/start_server.gif?raw=true)
@@ -48,7 +48,7 @@ There are two ways to use this project :
 
 ## Winning / Losing cases
 * the game will reseted.
-* you symbol will changed.
+* your symbol will changed.
 
     ![win-lose-cases](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/docs/end_edge.gif?raw=true)
 
@@ -56,8 +56,8 @@ There are two ways to use this project :
 
 ## Change from online mode to AI mode
 * press 'Play With AI' button.
-* game will reseted and connection wont recv any data. 
-* there are four AI engine level :
+* game will reseted and connection will not recv any data. 
+* there are four AI engine levels :
     * the level will automatically increased when you win.
     * maximum level is 4.
     * after each game you'll get a new playing symbol.
@@ -67,7 +67,7 @@ There are two ways to use this project :
 ## Set value and get AI response
 * choose empty square using (mouse/keyboard). 
 * hit enter to set a value. 
-* you'll get AI response.
+* you'll get an AI response.
     
     ![ai-res](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/docs/ai_res.gif?raw=true)
 
@@ -79,7 +79,7 @@ There are two ways to use this project :
     ![win](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/docs/win.gif?raw=true)
 
 ## Losing case 
-* AI engine level wont increased. 
+* AI engine level will not increased. 
 * the game will reseted. 
 * your symbol will changed.
     
