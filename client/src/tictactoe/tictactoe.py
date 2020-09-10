@@ -4,7 +4,7 @@ from random import randint
 class TicTacToe:
 
     """TicTacToe and win checking class
-    
+
     :param engine: TicTacToe engine level (1 to 4)
     :type engine: int
     """

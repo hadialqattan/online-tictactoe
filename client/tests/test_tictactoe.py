@@ -15,7 +15,13 @@ class Test_TicTacToe(TestCase):
         """Fist winning case horizontal"""
         r1 = TicTacToe.whoWinner([["X", "X", "X"], ["", "", ""], ["", "", ""]])
         r2 = TicTacToe.whoWinner([["", "", ""], ["X", "X", "X"], ["", "", ""]])
-        r3 = TicTacToe.whoWinner([["", "", ""], ["", "", ""], ["X", "X", "X"],])
+        r3 = TicTacToe.whoWinner(
+            [
+                ["", "", ""],
+                ["", "", ""],
+                ["X", "X", "X"],
+            ]
+        )
         assert r1 == ("X", (0, 0))
         assert r2 == ("X", (1, 0))
         assert r3 == ("X", (2, 0))

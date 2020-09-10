@@ -9,9 +9,9 @@ from tictactoe.tictactoe import TicTacToe
 class Board(GUIBase):
 
     """TicTacToe board
-    
+
     :param screen: pygame screen
-    :type screen: pygame.Surface 
+    :type screen: pygame.Surface
     """
 
     def __init__(self, screen: pygame.Surface):
@@ -38,7 +38,7 @@ class Board(GUIBase):
     @selected.setter
     def selected(self, pos: tuple):
         """selected property (setter) & refresh squares
-        
+
         :param pos: selected square position (row, column)
         :type pos: tuple
         """
@@ -69,7 +69,7 @@ class Board(GUIBase):
 
     def board_reset(self, r: str):
         """Reset the board
-        
+
         :param r: game result
         :type r: str
         """
@@ -168,7 +168,11 @@ class Board(GUIBase):
         for r in range(1, 3):
             # draw horizontal line (screen, (color), (start_pos), (end_pos), width)
             pygame.draw.line(
-                self.screen, (72, 234, 54), (260, r * space), (740, r * space), 3,
+                self.screen,
+                (72, 234, 54),
+                (260, r * space),
+                (740, r * space),
+                3,
             )
             # draw vertical line (screen, (color), (start_pos), (end_pos), width)
             pygame.draw.line(
@@ -266,7 +270,7 @@ class Square(GUIBase):
 
     def _type(self, txt: str, rgb: tuple, pos: tuple, fsize: int, space: int):
         """Draw string on the surface screen (override)
-        
+
         :param txt: text to draw
         :type txt: str
         :param rgb: text color

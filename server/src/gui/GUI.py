@@ -64,8 +64,7 @@ class GUI(Frame):
             exit(0)
 
     def __init_widgets(self):
-        """Init GUI widgets
-        """
+        """Init GUI widgets"""
         # change title
         self.winfo_toplevel().title("TicTacToe server")
         # set window size to 500x200

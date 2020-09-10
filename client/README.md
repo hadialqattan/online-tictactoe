@@ -1,4 +1,4 @@
-# Online-TicTacToe ([Client](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client))
+# Online-TicTacToe ([Client](https://github.com/hadialqattan/online-tictactoe/blob/master/client))
 
 > Online-tictactoe client is a client-side part of online-tictactoe game using python pygame lib aim to make a wonderful GUI for tictactoe game with simple network using socket and pickle lib.
 
@@ -8,13 +8,13 @@ There are two ways to use the client side :
 
 * Using exe version without any requirements :
     * Download entire exe dir.
-    * Configure [server.yaml](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/exe/server.yaml) file (set server host & port).
-    * Run exe/[main.exe](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/exe/main.exe).
+    * Configure [server.yaml](https://github.com/hadialqattan/online-tictactoe/blob/master/client/exe/server.yaml) file (set server host & port).
+    * Run exe/[main.exe](https://github.com/hadialqattan/online-tictactoe/blob/master/client/exe/main.exe).
     * Start playing!
 
-        ![ttt-interface](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/docs/init.jpg?raw=true)
+        ![ttt-interface](https://github.com/hadialqattan/online-tictactoe/blob/master/client/docs/init.jpg?raw=true)
 
-* Using [runner.sh](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/runner.sh) :
+* Using [runner.sh](https://github.com/hadialqattan/online-tictactoe/blob/master/client/runner.sh) :
     
     * Install requirements : 
         ```shell
@@ -26,7 +26,7 @@ There are two ways to use the client side :
         ```
     * Start playing!
     
-        ![ttt-interface](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/docs/init.jpg?raw=true)
+        ![ttt-interface](https://github.com/hadialqattan/online-tictactoe/blob/master/client/docs/init.jpg?raw=true)
 
 # Demo  🧮
 > You can playing with any connected enemy or playing with AI.
@@ -34,23 +34,23 @@ There are two ways to use the client side :
 # Play Online (online)
 
 ## Start the server to start playing
-* configure [server.yaml](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/server.yaml) file for client.
+* configure [server.yaml](https://github.com/hadialqattan/online-tictactoe/blob/master/client/server.yaml) file for client.
 * start the server.
     
-    ![start-the-server](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/docs/start_server.gif?raw=true)
+    ![start-the-server](https://github.com/hadialqattan/online-tictactoe/blob/master/client/docs/start_server.gif?raw=true)
 
 ## Start playing with stable connection!
 * choose empty square using (mouse/keyboard).
 * hit enter to set a value.
 * wherever you play, your enemy will see the result immediately.
     
-    ![state-share](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/docs/state_share.gif?raw=true)
+    ![state-share](https://github.com/hadialqattan/online-tictactoe/blob/master/client/docs/state_share.gif?raw=true)
 
 ## Winning / Losing cases
 * the game will reseted.
 * your symbol will changed.
 
-    ![win-lose-cases](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/docs/end_edge.gif?raw=true)
+    ![win-lose-cases](https://github.com/hadialqattan/online-tictactoe/blob/master/client/docs/end_edge.gif?raw=true)
 
 # Play With AI (offline & online)
 
@@ -62,35 +62,35 @@ There are two ways to use the client side :
     * maximum level is 4.
     * after each game you'll get a new playing symbol.
     
-        ![change-to-ai-mode](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/docs/setaimode.gif?raw=true)
+        ![change-to-ai-mode](https://github.com/hadialqattan/online-tictactoe/blob/master/client/docs/setaimode.gif?raw=true)
 
 ## Set value and get AI response
 * choose empty square using (mouse/keyboard). 
 * hit enter to set a value. 
 * you'll get an AI response.
     
-    ![ai-res](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/docs/ai_res.gif?raw=true)
+    ![ai-res](https://github.com/hadialqattan/online-tictactoe/blob/master/client/docs/ai_res.gif?raw=true)
 
 ## Winning case
 * AI engine level will increased.
 * the game will reseted.
 * your symbol will changed.
     
-    ![win](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/docs/win.gif?raw=true)
+    ![win](https://github.com/hadialqattan/online-tictactoe/blob/master/client/docs/win.gif?raw=true)
 
 ## Losing case 
 * AI engine level will not increased. 
 * the game will reseted. 
 * your symbol will changed.
     
-    ![lose](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/docs/lose.gif?raw=true)
+    ![lose](https://github.com/hadialqattan/online-tictactoe/blob/master/client/docs/lose.gif?raw=true)
 
 # Tests 🧪
 
 Test dir include tests for two classes :
-* [network.network.Network](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/src/network/network.py)
-* [tictactoe.tictactoe.TicTacToe](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/src/tictactoe/tictactoe.py) (only whoWinner function)
-* [tictactoe.tictactoe.TicTacToe](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/src/tictactoe/tictactoe.py) (entire class)
+* [network.network.Network](https://github.com/hadialqattan/online-tictactoe/blob/master/client/src/network/network.py)
+* [tictactoe.tictactoe.TicTacToe](https://github.com/hadialqattan/online-tictactoe/blob/master/client/src/tictactoe/tictactoe.py) (only whoWinner function)
+* [tictactoe.tictactoe.TicTacToe](https://github.com/hadialqattan/online-tictactoe/blob/master/client/src/tictactoe/tictactoe.py) (entire class)
 
 ### Run instructions :
 * Install requirements:
@@ -98,19 +98,19 @@ Test dir include tests for two classes :
     $ sudo pip3 install -r requirements.txt
     ```
 * All tests : 
-    * Run all tests using [runner.sh](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/runner.sh)
+    * Run all tests using [runner.sh](https://github.com/hadialqattan/online-tictactoe/blob/master/client/runner.sh)
         ```shell
         $ ./runner.sh t
         ```
-    * [network.network.Network](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/src/network/network.py) class : 
+    * [network.network.Network](https://github.com/hadialqattan/online-tictactoe/blob/master/client/src/network/network.py) class : 
         ```shell
         $ ./runner.sh tn
         ```
-    * [tictactoe.tictactoe.TicTacToe](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/src/tictactoe/tictactoe.py) (only whoWinner function) : 
+    * [tictactoe.tictactoe.TicTacToe](https://github.com/hadialqattan/online-tictactoe/blob/master/client/src/tictactoe/tictactoe.py) (only whoWinner function) : 
         ```shell
         $ ./runner.sh tt
         ```
-    * [tictactoe.tictactoe.TicTacToe](https://github.com/HadiZakiAlQattan/online-tictactoe/blob/master/client/src/tictactoe/tictactoe.py) (entire class) : 
+    * [tictactoe.tictactoe.TicTacToe](https://github.com/hadialqattan/online-tictactoe/blob/master/client/src/tictactoe/tictactoe.py) (entire class) : 
         ```shell
         $ ./runner.sh ta
         ```

@@ -5,9 +5,9 @@ import pygame
 class GUIBase:
 
     """Base GUI class
-    
+
     :param screen: pygame screen
-    :type screen: pygame.Surface 
+    :type screen: pygame.Surface
     """
 
     def __init__(self, screen: pygame.Surface):
@@ -25,7 +25,7 @@ class GUIBase:
 
     def _type(self, txt: str, rgb: tuple, pos: tuple, fsize: int, b: bool = False):
         """Draw string on the surface screen
-        
+
         :param txt: text to draw
         :type txt: str
         :param rgb: text color

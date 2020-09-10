@@ -30,7 +30,7 @@ class LeftPanel(GUIBase):
     @connected.setter
     def connected(self, isconnected: bool):
         """connected property (setter)
-        
+
         :param isconnected: connection status
         :type isconnected: bool
         """
@@ -97,8 +97,8 @@ class LeftPanel(GUIBase):
 
 class ConnectionControl(GUIBase):
 
-    """Connection control class 
-    
+    """Connection control class
+
     :param screen: pygame screen
     :type screen: pygame.Surface
     :param connected: connection status
@@ -193,7 +193,7 @@ class AIControl(GUIBase):
 
 class GameState(GUIBase):
 
-    """Game state class 
+    """Game state class
 
     :param screen: pygame screen
     :type screen: pygame.Surface
@@ -219,7 +219,7 @@ class GameState(GUIBase):
 
 class Button(GUIBase):
 
-    """Button class 
+    """Button class
     :param target: target function to start onclick
     :type target: function
     :param _args: target function args
@@ -275,7 +275,7 @@ class Button(GUIBase):
 
     def click(self, args: tuple = ()):
         """Handle click event
-        
+
         :param args: target function args if the args isn't constant
         :type args: tuple
         """
@@ -289,7 +289,7 @@ class Button(GUIBase):
 
     def draw(self, ai: bool):
         """Draw button rect
-        
+
         :param ai: play with ai or online
         :type ai: bool
         """

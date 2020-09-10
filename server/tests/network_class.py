@@ -20,7 +20,7 @@ class Network:
 
     def connect(self) -> bool:
         """connect to the server
-        
+
         :returns: connection status
         :rtype: bool
         """

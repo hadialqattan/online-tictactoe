@@ -153,7 +153,7 @@ class Client:
 
     def __play(self, d: tuple = ()):
         """play event handler
-        
+
         :param d: additional data (value, (row, column)) if from server else ()
         :type d: tuple
         """
@@ -188,7 +188,7 @@ class Client:
             self.v = self.__reverse
 
     def __play_with_ai(self, ai: bool):
-        """play with ai event handler 
+        """play with ai event handler
 
         :param ai: is ai turn
         :type ai: bool
